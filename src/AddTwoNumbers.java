@@ -2,34 +2,58 @@ import java.util.Arrays;
 
 public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        long n1 = createNumber(l1);
-        System.out.println(n1);
-        long n2 = createNumber(l2);
-        System.out.println(n2);
-        long r = n1 + n2;
-        final ListNode rn = new ListNode((int)(r % 10));
-        while(r >= 10) {
-            rn.next = new ListNode((int)(r % 10));
-            r /= 10;
-        }
-        return rn;
-    }
+        if (l1 == null || l2 == null) return null;
 
-    long createNumber(ListNode l) {
-        long n = l.val;
-        int pow = 1;
-        while(l.next != null) {
-            l = l.next;
-            n += l.val * Math.pow(10, pow);
-            pow++;
-        }
-        return n;
-    }
+        ListNode head = null, n = null;
+        int prevExtra = 0, extra;
+        do {
+            int res = l1.val + l2.val + prevExtra;
+            if (res >= 10) {
+                extra = 1;
+                res %= 10;
+            }
+            else {
+                extra = 0;
+            }
 
-    public static void main(String[] args) {
-        final ListNode l1 = createListNode(Arrays.asList(2, 4, 3));
-        final ListNode l2 = createListNode(Arrays.asList(5, 6, 4));
-        new AddTwoNumbers().addTwoNumbers(l1, l2);
+            if (n != null) {
+                n.next = new ListNode(res);
+                n = n.next;
+            }
+            else {
+                head = n = new ListNode(res);
+            }
+
+            prevExtra = extra;
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        while(l1 != null && l2 != null);
+
+        ListNode rest = l1 == null ? l2 : l1;
+        if (rest != null) {
+            do {
+                int res = rest.val + prevExtra;
+                if (res >= 10) {
+                    extra = 1;
+                    res %= 10;
+                }
+                else {
+                    extra = 0;
+                }
+                n.next = new ListNode(res);
+                prevExtra = extra;
+                n = n.next;
+                rest = rest.next;
+            }
+            while(rest != null);
+        }
+
+        if(prevExtra != 0) {
+            n.next = new ListNode(prevExtra);
+        }
+
+        return head;
     }
 
     static ListNode createListNode(Iterable<Integer> ints) {
@@ -58,10 +82,23 @@ public class AddTwoNumbers {
         System.out.println();
     }
 
-    static class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) { val = x; }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder("[");
+            ListNode l = this;
+            sb.append(l.val);
+            while (l.next != null) {
+                sb.append(",").append(l.next.val);
+                l = l.next;
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
 }
 
