@@ -1,3 +1,5 @@
+package array;
+
 public class RotateArray {
 
     //much faster - O(N), and requires only O(1) extra space
