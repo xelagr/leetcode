@@ -3,6 +3,8 @@ package array;
 import java.util.HashMap;
 
 public class TwoSum {
+
+    //complexity O(N), additional space O(N)
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> complementaryNums = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {

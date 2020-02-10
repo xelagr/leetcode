@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ThreeSum {
 
-    // complexity O(N^2)
+    // complexity O(N^2), additional space O(1)
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> triples = new ArrayList<>();
@@ -40,7 +40,7 @@ public class ThreeSum {
     }
 
 
-    // complexity O(N^2 * logN)
+    // complexity O(N^2 * logN), additional space O(1)
     public List<List<Integer>> threeSum2(int[] nums) {
         Set<List<Integer>> triples = new HashSet<>();
         Arrays.sort(nums);
