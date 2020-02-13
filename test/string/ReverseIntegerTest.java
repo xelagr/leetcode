@@ -1,4 +1,7 @@
+package string;
+
 import org.junit.Test;
+import string.ReverseInteger;
 
 import static org.junit.Assert.assertEquals;
 
