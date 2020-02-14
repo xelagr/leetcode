@@ -29,4 +29,21 @@ public class StringToIntegerTest {
     public void test5() {
         assertEquals(-2147483648, new StringToInteger().myAtoi("-91283472332"));
     }
+
+    @Test
+    public void test6() {
+        assertEquals(2147483647, new StringToInteger().myAtoi("2147483648"));
+    }
+
+    @Test
+    public void test7() {
+        assertEquals(-2147483648, new StringToInteger().myAtoi("-2147483649"));
+    }
+
+    @Test
+    public void test8() {
+        assertEquals(2147483647, new StringToInteger().myAtoi("9223372036854775808"));
+    }
+
+
 }
