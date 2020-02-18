@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BaseLinkedListTest {
     ListNode arrayToList(int[] a) {
-        if (a == null) {
+        if (a == null || a.length == 0) {
             return null;
         }
         ListNode head, node;
