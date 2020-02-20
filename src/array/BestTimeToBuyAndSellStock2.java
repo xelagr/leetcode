@@ -1,6 +1,6 @@
 package array;
 
-public class BestTimeToBuyAndSellStock {
+public class BestTimeToBuyAndSellStock2 {
     public int maxProfit(int[] prices) {
         int profit = 0;
         boolean bought = false;
