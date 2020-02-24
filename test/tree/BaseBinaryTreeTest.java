@@ -6,6 +6,7 @@ import java.util.Queue;
 public class BaseBinaryTreeTest {
 
     protected TreeNode arrayToTree(Integer[] a) {
+        if (a.length == 0) return null;
         Queue<TreeNode> queue = new ArrayDeque<>();
         TreeNode head = new TreeNode(a[0]);
         queue.add(head);
