@@ -30,4 +30,9 @@ public class CountPrimesTest {
     public void test5() {
         assertEquals(1, new CountPrimes().countPrimes(3));
     }
+
+    @Test
+    public void test6() {
+        assertEquals(78498, new CountPrimes().countPrimes(1_000_000));
+    }
 }
