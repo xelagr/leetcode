@@ -3,6 +3,8 @@ package tree;
 import java.util.*;
 
 public class SymmetricTree {
+
+    //iterative
     public boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
 
@@ -22,6 +24,7 @@ public class SymmetricTree {
         return left.isEmpty() && right.isEmpty();
     }
 
+    // recursive
     public boolean isSymmetric2(TreeNode root) {
         if (root == null) return true;
         List<Integer> left = new ArrayList<>(), right = new ArrayList<>();
