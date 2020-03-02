@@ -1,7 +1,8 @@
 package tree;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import org.junit.Test;
+
+import java.util.*;
 
 public class BaseBinaryTreeTest {
 
@@ -23,4 +24,29 @@ public class BaseBinaryTreeTest {
         }
         return head;
     }
+
+    protected List<Integer> treeToArray(TreeNode root) {
+        if (root == null) return Collections.emptyList();
+        List<Integer> list = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node != null) {
+                list.add(node.val);
+                queue.add(node.left);
+                queue.add(node.right);
+            }
+            else {
+                list.add(null);
+            }
+        }
+        ListIterator<Integer> it = list.listIterator(list.size());
+        while(it.hasPrevious() && it.previous() == null) {
+            it.remove();
+        }
+
+        return list;
+    }
+
 }
